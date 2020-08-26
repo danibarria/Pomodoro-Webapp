@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
-// import example from './module-example'
+import UserStore from './modules/user.store'
 
 Vue.use(Vuex)
 
@@ -13,16 +14,23 @@ Vue.use(Vuex)
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+const vuexPersist = new VuexPersist({
+  key: 'simplepomodoro',
+  storage: window.localStorage,
+  modules: ['UserStore']
+
+})
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      UserStore
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
+    strict: process.env.DEV,
+    plugins: [vuexPersist.plugin]
   })
 
   return Store

@@ -100,7 +100,10 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Dialog',
+        'Loading'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -114,39 +117,36 @@ module.exports = function (/* ctx */) {
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
-      workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
+      workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
+      skipWaiting: true, //quitar
+      clientClaim: true, // quitar
       manifest: {
         name: 'Pomodoro PWA',
         short_name: 'Pomodoro PWA',
         description: 'Take care of what you doing day by day',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        background_color: '#f44336',
+        theme_color: '#f44336',
         icons: [
           {
-            src: 'icons/icon-128x128.png',
+            src: '/icons/128.png',
             sizes: '128x128',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-192x192.png',
-            sizes: '192x192',
+            src: '/icons/196.png',
+            sizes: '196x196',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-256x256.png',
+            src: '/icons/256.png',
             sizes: '256x256',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-384x384.png',
-            sizes: '384x384',
-            type: 'image/png'
-          },
-          {
-            src: 'icons/icon-512x512.png',
+            src: '/icons/512.png',
             sizes: '512x512',
             type: 'image/png'
           }
